@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import "tailwindcss";
+@import "./src/components/lightswind.css";
+
+body {
+  font-family: 'Inter', sans-serif;
+}
