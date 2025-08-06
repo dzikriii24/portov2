@@ -1,4 +1,6 @@
 import LightBG from './component/LightBG';
+import React from 'react'
+import { createRoot } from 'react-dom/client'
 import TrueFocus from './component/TextTop';
 import ProfileCard from './component/ProfileCard'
 import TextName from './component/TextName';
@@ -19,16 +21,33 @@ import TiltedCard from './component/TitledCard';
 import InfiniteScroll from './component/InfiniteScroll';
 import TextScrollMarquee from './components/lightswind/TextScrollMarquee';
 import GlassIcons from './component/GlassIcons';
+import MagicBento from './component/MagicBento'
+import Jasa from './component/Jasa'
+import ChatBubble from './component/ChatBubble'
+import { ConfettiButton } from '@/components/lightswind/confetti-button';
+import { Sparkles } from "lucide-react";
+
+
+// ICONSSSS
 import { FiFileText, FiBook, FiHeart, FiCloud, FiEdit, FiBarChart2 } from 'react-icons/fi';
-import { IoLogoPython } from "react-icons/io";
+import { IoLogoPython, IoLogoLinkedin, IoLogoWhatsapp } from "react-icons/io";
+import { BiLogoGmail } from "react-icons/bi";
+import { MdOutlineMailOutline } from "react-icons/md";
 import { TbBrandPhp, TbBrandMysql } from "react-icons/tb";
 import { RiReactjsLine, RiJavaLine, RiOpenaiFill } from "react-icons/ri";
-import { IoLogoJavascript, IoLogoGithub, IoLogoHtml5, IoLogoCss3 } from "react-icons/io5";
+import { IoLogoJavascript, IoLogoGithub, IoLogoHtml5, IoLogoCss3, IoDocumentSharp } from "react-icons/io5";
 import { BiLogoTailwindCss, BiLogoGoLang } from "react-icons/bi";
+import { FaInstagramSquare, FaWhatsapp, FaLinkedinIn, FaInstagram } from "react-icons/fa";
+import { LuGithub } from "react-icons/lu";
+
+
+
+
 import Carousel3D from '@/components/lightswind/carousel-3d';
 import Draggable3DImageRing from '@/components/lightswind/draggable-3d-image-ring';
 import RollingGallery from './component/RollingGallery';
 import Carousel from './component/Carousel';
+import SlidingLogoMarquee from '@/components/lightswind/sliding-logo-marquee';
 
 
 const imageUrls = [
@@ -38,6 +57,53 @@ const imageUrls = [
   "https://i.pinimg.com/1200x/0d/4a/d9/0d4ad9cfb961945a403c829becc6deff.jpg",
   "https://i.pinimg.com/736x/49/cf/c6/49cfc6c4b5a1cbbf2578bdd4abdfedc3.jpg",
   "https://i.pinimg.com/736x/d4/58/a2/d458a2b8662458f911214ad6da197a26.jpg",
+];
+
+
+const pexel = (id) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg`
+const images = [
+  // Front
+  { position: [0, 0, 1.5], rotation: [0, 0, 0], url: pexel(33314533) },
+  // Back
+  { position: [-0.8, 0, -0.6], rotation: [0, 0, 0], url: pexel(33319540) },
+  { position: [0.8, 0, -0.6], rotation: [0, 0, 0], url: pexel(33315017) },
+  // Left
+  { position: [-1.75, 0, 0.25], rotation: [0, Math.PI / 2.5, 0], url: pexel(33319036) },
+  { position: [-2.15, 0, 1.5], rotation: [0, Math.PI / 2.5, 0], url: pexel(33324957) },
+  { position: [-2, 0, 2.75], rotation: [0, Math.PI / 2.5, 0], url: pexel(33314755) },
+  // Right
+  { position: [1.75, 0, 0.25], rotation: [0, -Math.PI / 2.5, 0], url: pexel(33319919) },
+  { position: [2.15, 0, 1.5], rotation: [0, -Math.PI / 2.5, 0], url: pexel(33320663) },
+  { position: [2, 0, 2.75], rotation: [0, -Math.PI / 2.5, 0], url: pexel(33324958) }
+]
+
+
+const logos = [
+  {
+    id: "1",
+    content: <FaLinkedinIn className='text-9xl' />,
+    href: "https://www.linkedin.com/in/dzikrirabbani/"
+  },
+  {
+    id: "2",
+    content: <LuGithub className='text-9xl' />,
+    href: "https://github.com/dzikriii24"
+  },
+  {
+    id: "3",
+    content: <FaInstagram className='text-9xl' />,
+    href: "https://www.instagram.com/sweswoz/"
+  },
+  {
+    id: "4",
+    content: <MdOutlineMailOutline className='text-9xl' />,
+    href: "mailto:dzikrirabbani2401@gmail.com"
+  },
+  {
+    id: "5",
+    content: <FaWhatsapp className='text-9xl' />,
+    href: "https://wa.me/6285156296580"
+  }
 ];
 
 
@@ -112,48 +178,66 @@ const items = [
 const projects = [
   {
     id: 1,
-    title: "GUTHB SENSE Safety System",
-    brand: "FireCat Group",
-    description: "AI-driven smart uniform tech for law enforcement, military & firefighters.",
-    tags: ["Safety", "Military", "AI Sensors", "Monitoring"],
-    imageUrl: "https://i.pinimg.com/1200x/88/f3/12/88f3121cc316eee5ea56e4463b1b252a.jpg",
-    link: "https://github.com/dzikriii24"
+    title: "KampEase",
+    brand: "",
+    description: "KampEase is a web-based platform designed to simplify campus navigation and enhance the daily experience of students, staff, and visitors. Through KampEase, users can easily locate classrooms, public facilities, administrative offices, and other key points of interest across the campus. all in one convenient platform.",
+    tags: ["PHP", "MySQL", "OpenStreetMaps API", "Javascript"],
+    imageUrl: "https://images.pexels.com/photos/33314541/pexels-photo-33314541.jpeg",
+    link: "https://github.com/dzikriii24/KampEase"
   },
   {
     id: 2,
-    title: "6th SENSE Safety link dei System",
-    brand: "FireCat LLLLGroup",
-    description: "AI-driven smart uniform tech for law enforcement, military & firefighters.",
-    tags: ["Safety", "Military", "AI Sensors", "Monitoring"],
-    imageUrl: "https://i.pinimg.com/1200x/88/f3/12/88f3121cc316eee5ea56e4463b1b252a.jpg",
-    link: ""
+    title: "Sea Salon",
+    brand: "",
+    description: "Sea Salon is a web-based application designed to help customers book salon services online easily, quickly, and flexibly. With a user-friendly and responsive interface, Sea Salon offers a modern digital solution to meet the needs of both salons and their customers in today’s fast-paced digital era.",
+    tags: ["PHP", "MySQL", "JavaScript", "Tailwind"],
+    imageUrl: "https://images.pexels.com/photos/33314756/pexels-photo-33314756.jpeg",
+    link: "https://github.com/dzikriii24/seasalon2"
   },
   {
-    id: 1,
-    title: "6th SENSE Safety System",
-    brand: "FireCat Group",
-    description: "AI-driven smart uniform tech for law enforcement, military & firefighters.",
-    tags: ["Safety", "Military", "AI Sensors", "Monitoring"],
-    imageUrl: "https://i.pinimg.com/1200x/88/f3/12/88f3121cc316eee5ea56e4463b1b252a.jpg",
-    link: "/projects/firecat"
+    id: 3,
+    title: "Canteen Go",
+    brand: "",
+    description: "Canteengo is a digital web platform designed to support the sale and promotion of local food products, especially those from small and medium enterprises (UMKM). It offers an easy-to-use, responsive interface that helps sellers showcase their products, manage orders, and reach a wider audience.",
+    tags: ["PHP", "PHP Library", "JavaScript", "Tailwind", "MySQL"],
+    imageUrl: "https://images.pexels.com/photos/33315015/pexels-photo-33315015.jpeg",
+    link: "https://github.com/dzikriii24/CanteenGo_code"
   },
   {
-    id: 1,
-    title: "6th SENSE Safety System",
-    brand: "FireCat Group",
-    description: "AI-driven smart uniform tech for law enforcement, military & firefighters.",
-    tags: ["Safety", "Military", "AI Sensors", "Monitoring"],
-    imageUrl: "https://i.pinimg.com/1200x/88/f3/12/88f3121cc316eee5ea56e4463b1b252a.jpg",
-    link: "/projects/firecat"
+    id: 4,
+    title: "Smart POS System for Modern Retail",
+    brand: "",
+    description: "A lightweight and user-friendly cashier app designed to simplify sales transactions, manage inventory, and generate real-time reports. Perfect for small businesses, cafés, retail stores, and local shops. Sell smarter, track better, grow faster.",
+    tags: ["Java", "Java Swing"],
+    imageUrl: "https://images.pexels.com/photos/33319037/pexels-photo-33319037.jpeg",
+    link: "https://github.com/dzikriii24/supermarketGUI"
   },
   {
-    id: 1,
-    title: "6th SENSE Safety System",
-    brand: "FireCat Group",
-    description: "AI-driven smart uniform tech for law enforcement, military & firefighters.",
-    tags: ["Safety", "Military", "AI Sensors", "Monitoring"],
-    imageUrl: "https://i.pinimg.com/1200x/88/f3/12/88f3121cc316eee5ea56e4463b1b252a.jpg",
-    link: "/projects/firecat"
+    id: 5,
+    title: "Smart Laundry App",
+    brand: "",
+    description: "A lightweight and user-friendly laundry app designed to simplify order recording, track laundry progress, and manage customer data efficiently. Perfect for home-based laundries, kilo laundry services, and professional laundry businesses. Run a more organized operation, speed up your workflow, and keep your customers satisfied.",
+    tags: ["Java", "Java Spring-boot", "MySQL", "H2 Database"],
+    imageUrl: "https://images.pexels.com/photos/33319538/pexels-photo-33319538.jpeg",
+    link: "https://github.com/dzikriii24/SpringBoot"
+  },
+  {
+    id: 6,
+    title: "Digital Wedding Invitation",
+    brand: "",
+    description: "A digital wedding invitation app designed to offer a more elegant, personal, and practical way to invite guests. Send your invites online, let guests RSVP with ease, showcase your love story, photo gallery, and provide event details with interactive maps. Perfect for modern couples who want to celebrate love with a touch of technology.",
+    tags: ["HTML", "SASS", "JavaScript", "Tailwind"],
+    imageUrl: "https://images.pexels.com/photos/33319918/pexels-photo-33319918.jpeg",
+    link: "https://dzikriii24.github.io/1sUndangan/"
+  },
+  {
+    id: 7,
+    title: "Tanduria",
+    brand: "",
+    description: "Tanduria is a web-based application designed to help farmers and land managers—especially the younger generation—manage agriculture digitally and efficiently.With features like field condition monitoring, weather prediction, planting schedules, crop yield tracking, and IoT-based smart irrigation, Tanduria offers an accessible and user-friendly smart farming solution.",
+    tags: ["PHP", "Flask", "API Development", "MySQL", "IoT"],
+    imageUrl: "https://images.pexels.com/photos/33320664/pexels-photo-33320664.jpeg",
+    link: "https://github.com/dzikriii24/tanduria"
   }
 ];
 const handleAnimationComplete = () => {
@@ -236,6 +320,24 @@ function App() {
                 <Captions text=" For me, never stop learning, because life never stops teaching" disabled={false} speed={3} className='custom-class' />
               </div>
 
+              <FadeContent>
+                <div className='mt-6'>
+                  <a
+                    class="group flex items-center justify-between gap-4 w-60 rounded-lg border border-white bg-transparent px-5 py-3 transition-colors hover:bg-transparent focus:ring-3 focus:outline-hidden"
+                    href="https://drive.google.com/drive/folders/1aaMdBPFB-zggxKNh068eXNZkWEk2Kh9V?usp=sharing" target='blank'
+                  >
+                    <span class="font-medium text-white transition-colors group-hover:text-white/50">
+                      Curriculum Vitae
+                    </span>
+
+                    <span class="text-white text-2xl py-2">
+                      <IoDocumentSharp />
+                    </span>
+                  </a>
+                </div>
+              </FadeContent>
+
+
             </div>
             <div className="mt-8 sm:mt-0 flex justify-center items-center">
               <ProfileCard
@@ -269,7 +371,7 @@ function App() {
 
       {/* Timelinee */}
       <div>
-        <div className='mt-10 absolute w-full h-[700vh] bg-black overflow-hidden z-0'>
+        <div className='mt-10 absolute w-full h-[1000vh] bg-black overflow-hidden z-0'>
           <ParticlesBackground
             colors={['#00ffff', '#ff00ff', '#ffaa00']}
             size={4}
@@ -277,8 +379,8 @@ function App() {
             countTablet={60}
             countMobile={40}
             zIndex={1}
-            height="700vh"
-          />
+            height="1000vh"
+            className='z-0' />
         </div>
 
 
@@ -448,7 +550,7 @@ function App() {
 
       {/* tech stack */}
 
-      <div>
+      <div className='mt-40'>
         <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
           <div className='sm:text-5xl text-2xl font-bold text-center mt-10 px-2'>
             <TextName
@@ -472,7 +574,7 @@ function App() {
         </FadeContent>
 
       </div>
-      <div>
+      <div className='mt-20'>
         <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
           <div className='sm:text-5xl text-2xl font-bold text-center mt-10'>
             <TextName
@@ -503,12 +605,12 @@ function App() {
 
 
 
-      <div className='z-50 my-grid'>
+      <div className='z-50 my-grid mt-20'>
         <div className='flex flex-row sm:items-center sm:justify-center relative px-4'>
           <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
             <div className='sm:text-5xl text-2xl font-bold text-center mt-10'>
               <TextName
-                text="Human Skills That Actually Matter"
+                text="Badges of Growth"
                 delay={150}
                 animateBy="words"
                 direction="left"
@@ -518,7 +620,7 @@ function App() {
 
             </div>
             <div className="mt-4 text-base text-pretty sm:text-lg/relaxed">
-              <Captions text="Soft skills that come naturally to me." disabled={false} speed={3} className='custom-class' />
+              <Captions text="Proof that I’ve learned a thing or two along the way." disabled={false} speed={3} className='custom-class' />
             </div>
           </FadeContent>
         </div>
@@ -535,117 +637,91 @@ function App() {
         </div>
       </div>
 
+      <div className='mt-20'>
+        <div className='flex flex-row sm:items-center sm:justify-start mb-10 relative px-4'>
+          <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
+            <div className='sm:text-5xl text-2xl font-bold text-center mt-10'>
+              <TextName
+                text="Let’s Make Something Cool Together"
+                delay={150}
+                animateBy="words"
+                direction="left"
+                onAnimationComplete={handleAnimationComplete}
 
+              />
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-      {/* Lasting get in touch */}
-      <div className='relative w-screen h-screen overflow-hidden'>
-        <div className='absolute inset-0 w-full h-60 sm:h-[500px] mt-20 sm:mt-30 z-0'>
-          <Squares
-            speed={0.5}
-            squareSize={40}
-            direction='diagonal' // up, down, left, right, diagonal
-            borderColor='#fff'
-            hoverFillColor='#222'
-          />
+            </div>
+            <div className="mt-4 text-base text-pretty sm:text-lg/relaxed">
+              <Captions text="Have an idea or want to collab? Hit me up through the socials below. I'm always down to build something fun (or at least try to)." disabled={false} speed={3} className='custom-class' />
+            </div>
+          </FadeContent>
         </div>
-        <div className='grid grid-cols-3 sm:px-40 sm:grid gap-4 p-4 mx-auto max-w-screen-xl mt-20 sm:mt-40'>
-          <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
-            <SosmedCard
-              className="custom-spotlight-card group transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-lg bg-gradient-to-br border border-white/10 backdrop-blur-xl card-glass"
-              spotlightColor="rgba(0, 229, 255, 0.2)"
-            >
+        <FadeContent>
+          <div className='z-50 sm:items-center sm:flex sm:justify-center sm:justify-self-center mt-20'>
+            <SlidingLogoMarquee
+              items={logos}
+              speed={8}
+              height="120px"
+              enableBlur={true}
+              blurIntensity={2}
+              pauseOnHover={true}
+              showGridBackground={true}
+              onItemClick={(item) => console.log("Clicked:", item.id)}
+            />
 
-              <div className='flex flex-col items-center justify-center'>
-                <GradientText
-                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-                  animationSpeed={3}
-                  showBorder={false}
-                  className="custom-class mb-3 text-sm sm:text-lg -mt-4 sm:mt-0 font-semibold"
-                >
-                  Instagram
-                </GradientText>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><path d="M176,32H80A48,48,0,0,0,32,80v96a48,48,0,0,0,48,48h96a48,48,0,0,0,48-48V80A48,48,0,0,0,176,32ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z" opacity="0.2" /><rect x="32" y="32" width="192" height="192" rx="48" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><circle cx="128" cy="128" r="40" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="16" /><circle cx="180" cy="76" r="12" /></svg>
-                <p className="mt-4 text-base text-pretty text-sm sm:text-lg/relaxed sm:w-full border-t border-white/10 pt-3 text-zinc-400 text-center">
-                  <Captions text="sweswos" disabled={false} speed={3} className='custom-class' />
-                </p>
-              </div>
-
-            </SosmedCard>
-          </FadeContent>
-          <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
-            <SosmedCard
-              className="custom-spotlight-card group transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-lg bg-gradient-to-br border border-white/10 backdrop-blur-xl card-glass"
-              spotlightColor="rgba(0, 229, 255, 0.2)"
-            >
-
-              <div className='flex flex-col items-center justify-center'>
-                <GradientText
-                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-                  animationSpeed={3}
-                  showBorder={false}
-                  className="custom-class mb-3 text-sm sm:text-lg -mt-4 sm:mt-0 font-semibold"
-                >
-                  Linkedin
-                </GradientText>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><rect x="32" y="32" width="192" height="192" rx="8" opacity="0.2" /><rect x="32" y="32" width="192" height="192" rx="8" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><line x1="120" y1="112" x2="120" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><line x1="88" y1="112" x2="88" y2="176" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><path d="M120,140a28,28,0,0,1,56,0v36" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><circle cx="88" cy="84" r="12" /></svg>
-                <p className="mt-4 text-base text-pretty text-sm sm:text-lg/relaxed sm:w-full border-t border-white/10 pt-3 text-zinc-400 text-center">
-                  <Captions text="dzikrirabbani" disabled={false} speed={3} className='custom-class' />
-                </p>
-              </div>
-
-            </SosmedCard>
-          </FadeContent>
-          <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
-            <SosmedCard
-              className="custom-spotlight-card group transition-all duration-300 ease-in-out hover:scale-[1.02] hover:shadow-lg bg-gradient-to-br border border-white/10 backdrop-blur-xl card-glass"
-              spotlightColor="rgba(0, 229, 255, 0.2)"
-            >
-
-              <div className='flex flex-col items-center justify-center'>
-                <GradientText
-                  colors={["#40ffaa", "#4079ff", "#40ffaa", "#4079ff", "#40ffaa"]}
-                  animationSpeed={3}
-                  showBorder={false}
-                  className="custom-class mb-3 text-sm sm:text-lg -mt-4 sm:mt-0 font-semibold"
-                >
-                  Github
-                </GradientText>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><rect width="256" height="256" fill="none" /><path d="M104,232V192a32,32,0,0,1,32-32h0a32,32,0,0,1,32,32v40Z" opacity="0.2" /><path d="M119.83,56A52,52,0,0,0,76,32a51.92,51.92,0,0,0-3.49,44.7A49.28,49.28,0,0,0,64,104v8a48,48,0,0,0,48,48h48a48,48,0,0,0,48-48v-8a49.28,49.28,0,0,0-8.51-27.3A51.92,51.92,0,0,0,196,32a52,52,0,0,0-43.83,24Z" opacity="0.2" /><path d="M119.83,56A52,52,0,0,0,76,32a51.92,51.92,0,0,0-3.49,44.7A49.28,49.28,0,0,0,64,104v8a48,48,0,0,0,48,48h48a48,48,0,0,0,48-48v-8a49.28,49.28,0,0,0-8.51-27.3A51.92,51.92,0,0,0,196,32a52,52,0,0,0-43.83,24Z" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><path d="M104,232V192a32,32,0,0,1,32-32h0a32,32,0,0,1,32,32v40" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /><path d="M104,208H72a32,32,0,0,1-32-32A32,32,0,0,0,8,144" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="16" /></svg>
-                <p className="mt-4 text-base text-pretty text-sm sm:text-lg/relaxed sm:w-full border-t border-white/10 pt-3 text-zinc-400 text-center">
-                  <Captions text="dzikriii24" disabled={false} speed={3} className='custom-class' />
-                </p>
-              </div>
-
-            </SosmedCard>
-          </FadeContent>
-
-
-
-        </div>
+          </div>
+        </FadeContent>
 
       </div>
+
+      <div className='mt-40'>
+        <FadeContent>
+          <div className='sm:text-5xl text-2xl font-bold text-center mb-10 px-2'>
+            <TextName
+              text="Things I Can Build for You"
+              delay={150}
+              animateBy="words"
+              direction="left"
+              onAnimationComplete={handleAnimationComplete}
+
+            />
+          </div>
+
+
+          <div className='sm:h-[100vh] h-[500px] bg-base-100 text-black'>
+            <Jasa images={images} />
+          </div>
+        </FadeContent>
+      </div>
+
+
+      <div className="App mt-30">
+        <ChatBubble />
+      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
 
     </div>
 
 
   )
 }
+
+
 
 export default App

@@ -155,7 +155,7 @@ const Carousel3D = ({
                                         },
                                         children: [_jsx("span", {
                                             className: "relative z-10",
-                                            children: "Learn more"
+                                            children: "View Documentation"
                                         }), _jsx(ArrowRight, {
                                             className: "ml-2 w-4 h-4 relative z-10 transition-transform group-hover:translate-x-1"
                                         }), _jsx("span", {

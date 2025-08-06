@@ -2,41 +2,60 @@ import { useEffect, useState, useRef } from "react";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 // replace icons with your own if needed
 import { FiCircle, FiCode, FiFileText, FiLayers, FiLayout } from "react-icons/fi";
-
+import { FaGolang, FaJs, FaLinux   } from "react-icons/fa6";
+import { SiPostman } from "react-icons/si";
+import { RiEnglishInput } from "react-icons/ri";
 import "../css/carousel.css";
 
 const DEFAULT_ITEMS = [
-    {
-        title: "Text Animations",
-        description: "Cool text animations for your projects.",
-        id: 1,
-        icon: <FiFileText className="carousel-icon" />,
-        background: "https://i.pinimg.com/1200x/7e/04/37/7e04379d4dbee8d62a715626a11306a5.jpg",
-    },
-    {
-        title: "Animations",
-        description: "Smooth animations for your projects.",
-        id: 2,
-        icon: <FiCircle className="carousel-icon" />,
-    },
-    {
-        title: "Components",
-        description: "Reusable components for your projects.",
-        id: 3,
-        icon: <FiLayers className="carousel-icon" />,
-    },
-    {
-        title: "Backgrounds",
-        description: "Beautiful backgrounds and patterns for your projects.",
-        id: 4,
-        icon: <FiLayout className="carousel-icon" />,
-    },
-    {
-        title: "Common UI",
-        description: "Common UI components are coming soon!",
-        id: 5,
-        icon: <FiCode className="carousel-icon" />,
-    },
+  {
+    id: 1,
+    icon: <FaGolang className="carousel-icon" />,
+    description: "Golang Certificate – learning backend programming with Go.",
+    background: "https://i.pinimg.com/736x/af/a4/33/afa433095a5e5eef3e9d25c02776c718.jpg",
+  },
+  {
+    id: 2,
+    icon: <FaLinux  className="carousel-icon" />,
+    description: "NDG Linux Certificate – solid foundation in Linux command line & systems.",
+    background: "https://i.pinimg.com/736x/98/21/6c/98216ca3786113c6924fd71a34733f7c.jpg",
+  },
+  {
+    id: 3,
+    icon: <FaJs  className="carousel-icon" />,
+    description: "JavaScript Certificate – exploring dynamic frontend interactivity.",
+    background: "https://i.pinimg.com/736x/a1/bf/d7/a1bfd7bb53c53efe5e3697c026e45964.jpg",
+  },
+  {
+    id: 4,
+    icon: <SiPostman className="carousel-icon" />,
+    description: "API Automation Certificate – building automated API testing pipelines.",
+    background: "https://i.pinimg.com/736x/bd/b1/0c/bdb10ca278826811ce95a93bc79ca74e.jpg",
+  },
+  {
+    id: 5,
+    icon: <SiPostman className="carousel-icon" />,
+    description: "Basic QA Automation Certificate – introduction to quality assurance & tools.",
+    background: "https://i.pinimg.com/736x/7d/63/9e/7d639e3fabb71ca11e239fc2dd8588e7.jpg",
+  },
+  {
+    id: 6,
+    icon: <SiPostman className="carousel-icon" />,
+    description: "QA Test Activity Certificate – practical application of QA in projects.",
+    background: "https://i.pinimg.com/736x/53/2a/ce/532acec9df09361b3791cea968fa01eb.jpg",
+  },
+  {
+    id: 7,
+    icon: <RiEnglishInput className="carousel-icon" />,
+    description: "Basic English 1 Certificate – building essential English grammar and vocab.",
+    background: "https://i.pinimg.com/736x/d3/ed/48/d3ed48d4dae6803e71a082ea7a2bfea0.jpg",
+  },
+  {
+    id: 8,
+    icon: <RiEnglishInput className="carousel-icon" />,
+    description: "English Speaking Certificate – improving fluency and communication skills.",
+    background: "https://i.pinimg.com/736x/92/5b/01/925b010000599555aa4b49d982d2e3c6.jpg",
+  }
 ];
 
 const DRAG_BUFFER = 0;
@@ -46,7 +65,7 @@ const SPRING_OPTIONS = { type: "spring", stiffness: 300, damping: 30 };
 
 export default function Carousel({
     items = DEFAULT_ITEMS,
-    baseWidth = 300,
+    baseWidth = 400,
     autoplay = false,
     autoplayDelay = 3000,
     pauseOnHover = false,
@@ -184,7 +203,8 @@ export default function Carousel({
                                 height: round ? itemWidth : "100%",
                                 rotateY: rotateY,
                                 backgroundImage: `url(${item.background})`,
-                                backgroundSize: "cover",
+                                backgroundRepeat: "no-repeat",
+                                backgroundSize: "contain",
                                 backgroundPosition: "center",
                                 ...(round && { borderRadius: "50%" }),
                             }}

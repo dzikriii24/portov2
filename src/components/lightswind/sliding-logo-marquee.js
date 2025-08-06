@@ -3,7 +3,7 @@ import { jsx as _jsx, jsxs as _jsxs, Fragment as _Fragment } from "react/jsx-run
 import { useRef, useEffect, useState } from "react";
 import { cn } from "../lib/utils";
 import { Pause, Play } from "lucide-react";
-export function SlidingLogoMarquee({ items, speed = 60, pauseOnHover = true, enableBlur = true, blurIntensity = 1, height = "100px", width = "100%", gap = "0.5rem", scale = 1, direction = "horizontal", autoPlay = true, backgroundColor, showGridBackground = false, className, onItemClick, enableSpillEffect = false, animationSteps = 8, showControls = true, }) {
+export function SlidingLogoMarquee({ items, speed = 60, pauseOnHover = true, enableBlur = true, blurIntensity = 1, height = "120px", width = "100%", gap = "0.5rem", scale = 1, direction = "horizontal", autoPlay = true, backgroundColor, showGridBackground = false, className, onItemClick, enableSpillEffect = false, animationSteps = 8, showControls = true, }) {
     const containerRef = useRef(null);
     const [isPlaying, setIsPlaying] = useState(autoPlay);
     const [dimensions, setDimensions] = useState({ width: 0, height: 0 });
@@ -60,7 +60,7 @@ export function SlidingLogoMarquee({ items, speed = 60, pauseOnHover = true, ena
         }
 
         .sliding-marquee-resizable[data-spill="true"] .sliding-marquee-inner::after {
-          content: "";
+          content: "";  
           position: fixed;
           top: 50%;
           left: 50%;
@@ -127,8 +127,7 @@ export function SlidingLogoMarquee({ items, speed = 60, pauseOnHover = true, ena
         }
 
         .sliding-marquee-item {
-          height: 80%;
-          aspect-ratio: 16 / 9;
+          height: 100%;
           font-size: clamp(1rem, 3vw + 0.5rem, 4rem);
           display: grid;
           place-items: center;
@@ -142,7 +141,7 @@ export function SlidingLogoMarquee({ items, speed = 60, pauseOnHover = true, ena
         }
 
         .sliding-marquee-item svg {
-          height: 65%;
+          height: 100%;
         }
 
         @media (max-width: 767px) {
@@ -151,12 +150,12 @@ export function SlidingLogoMarquee({ items, speed = 60, pauseOnHover = true, ena
           }
 
           .sliding-marquee-item {
-            height: 60% !important;
+            height: 100% !important;
             font-size: 0.875rem !important;
           }
 
           .sliding-marquee-item svg {
-            height: 45% !important;
+            height: 100% !important;
           }
         }
 
