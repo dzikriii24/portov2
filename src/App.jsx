@@ -346,7 +346,7 @@ function App() {
                 handle="sweswoz"
                 status="Online"
                 contactText="Contact Me"
-                avatarUrl="src\assets\profileee.png"
+                avatarUrl="portov2\src\assets\profileee.png"
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
