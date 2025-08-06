@@ -346,7 +346,7 @@ function App() {
                 handle="sweswoz"
                 status="Online"
                 contactText="Contact Me"
-                avatarUrl="src\assets\profileee.png"
+                avatarUrl="https://images.pexels.com/photos/33334833/pexels-photo-33334833.png"
                 showUserInfo={true}
                 enableTilt={true}
                 enableMobileTilt={false}
@@ -371,7 +371,7 @@ function App() {
 
       {/* Timelinee */}
       <div>
-        <div className='mt-10 absolute w-full h-[1000vh] bg-black overflow-hidden z-0'>
+        <div className='mt-10 absolute w-full h-[1100vh] bg-black overflow-hidden z-0'>
           <ParticlesBackground
             colors={['#00ffff', '#ff00ff', '#ffaa00']}
             size={4}
@@ -379,7 +379,7 @@ function App() {
             countTablet={60}
             countMobile={40}
             zIndex={1}
-            height="1000vh"
+            height="1100vh"
             className='z-0' />
         </div>
 
@@ -448,28 +448,28 @@ function App() {
           >
             <Card>
               <img
-                src="src\assets\coding.png" // ganti dengan path atau URL gambarnya
+                src="https://images.pexels.com/photos/33334936/pexels-photo-33334936.jpeg" // ganti dengan path atau URL gambarnya
                 alt="Card Image"
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </Card>
             <Card>
               <img
-                src="src\assets\modeling.png" // ganti dengan path atau URL gambarnya
+                src="https://images.pexels.com/photos/33334940/pexels-photo-33334940.jpeg" // ganti dengan path atau URL gambarnya
                 alt="Card Image"
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </Card>
             <Card>
               <img
-                src="src\assets\msoffice.png" // ganti dengan path atau URL gambarnya
+                src="https://images.pexels.com/photos/33334941/pexels-photo-33334941.jpeg" // ganti dengan path atau URL gambarnya
                 alt="Card Image"
                 className="absolute inset-0 w-full h-full object-cover"
               />
             </Card>
             <Card>
               <img
-                src="src\assets\githubs.png" // ganti dengan path atau URL gambarnya
+                src="https://images.pexels.com/photos/33334939/pexels-photo-33334939.jpeg" // ganti dengan path atau URL gambarnya
                 alt="Card Image"
                 className="absolute inset-0 w-full h-full object-cover"
               />
