@@ -43,3 +43,22 @@
     grid-column: span 2 / span 2;
   }
 }
+
+/* CSS */
+.responsive-desktop {
+  height: 500px;
+
+}
+
+@media (min-width: 640px) {
+  .responsive-desktop {
+    display: block;
+    height: 100vh;
+  }
+}
+
+@media (max-width: 639px) {
+  .responsive-desktop {
+    display: none;
+  }
+}

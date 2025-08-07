@@ -21,10 +21,8 @@ import TiltedCard from './component/TitledCard';
 import InfiniteScroll from './component/InfiniteScroll';
 import TextScrollMarquee from './components/lightswind/TextScrollMarquee';
 import GlassIcons from './component/GlassIcons';
-import MagicBento from './component/MagicBento'
 import Jasa from './component/Jasa'
 import ChatBubble from './component/ChatBubble'
-import { ConfettiButton } from '@/components/lightswind/confetti-button';
 import { Sparkles } from "lucide-react";
 
 
