@@ -51,6 +51,7 @@
     "tailwindcss": "^4.1.11",
     "typescript": "^5.9.2",
     "vite": "^7.0.6",
+    "vite-plugin-compression": "^0.5.1",
     "vite-plugin-gh-pages": "^1.0.1"
   },
   "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",

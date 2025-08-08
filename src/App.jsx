@@ -1,28 +1,38 @@
-import LightBG from './component/LightBG';
-import React from 'react'
-import { createRoot } from 'react-dom/client'
-import TrueFocus from './component/TextTop';
-import ProfileCard from './component/ProfileCard'
-import TextName from './component/TextName';
-import TypeText from './component/TypeText'
-import Captions from './component/Captions';
-import CurvedLoop from './component/CurvedLoop';
-import SosmedCard from './component/SosmedCard';
-import FadeContent from './animations/FadeContent';
-import GradientText from './component/Gradient';
-import Squares from './component/Square';
-import CardSwap, { Card } from './component/CardSwap';
+import React, { Suspense } from 'react'
+import { createRoot } from 'react-dom/client';
+
+// --- Components ---
+const LightBG = React.lazy(() => import('./component/LightBG'));
+const TrueFocus = React.lazy(() => import('./component/TextTop'));
+const ProfileCard = React.lazy(() => import('./component/ProfileCard'));
+const TextName = React.lazy(() => import('./component/TextName'));
+const TypeText = React.lazy(() => import('./component/TypeText'));
+const Captions = React.lazy(() => import('./component/Captions'));
+const CurvedLoop = React.lazy(() => import('./component/CurvedLoop'));
+const InfiniteScroll = React.lazy(() => import('./component/InfiniteScroll'));
+const GlassIcons = React.lazy(() => import('./component/GlassIcons'));
+const Jasa = React.lazy(() => import('./component/Jasa'));
+const ChatBubble = React.lazy(() => import('./component/ChatBubble'));
+const Carousel = React.lazy(() => import('./component/Carousel'));
+
+// --- Components from lightswind ---
+const ParticlesBackground = React.lazy(() => import('./components/lightswind/ParticlesBackground'));
+const TextScrollMarquee = React.lazy(() => import('./components/lightswind/TextScrollMarquee'));
+
+// --- Handling Default and Named Exports ---
+// Untuk file yang punya default export (CardSwap) dan named export (Card)
+const CardSwap = React.lazy(() => import('./component/CardSwap'));
+
+// Cara khusus untuk me-load named export 'Card' dengan React.lazy
+export const Card = React.lazy(() =>
+  import('./component/CardSwap').then(module => ({ default: module.Card }))
+);
 import { ScrollTimeline } from "@/components/lightswind/scroll-timeline";
-import ParticlesBackground from "./components/lightswind/ParticlesBackground";
 import './css/card.css';
 import { gsap } from 'gsap';
-import RotatingText from './component/RotatingText';
-import TiltedCard from './component/TitledCard';
-import InfiniteScroll from './component/InfiniteScroll';
-import TextScrollMarquee from './components/lightswind/TextScrollMarquee';
-import GlassIcons from './component/GlassIcons';
-import Jasa from './component/Jasa'
-import ChatBubble from './component/ChatBubble'
+
+
+
 import { Sparkles } from "lucide-react";
 
 
@@ -39,14 +49,14 @@ import { FaInstagramSquare, FaWhatsapp, FaLinkedinIn, FaInstagram } from "react-
 import { LuGithub } from "react-icons/lu";
 
 
+// ANIMATION
+import FadeContent from './animations/FadeContent';
 
 
-import Carousel3D from '@/components/lightswind/carousel-3d';
-import Draggable3DImageRing from '@/components/lightswind/draggable-3d-image-ring';
-import RollingGallery from './component/RollingGallery';
-import Carousel from './component/Carousel';
-import SlidingLogoMarquee from '@/components/lightswind/sliding-logo-marquee';
 
+const Carousel3D = React.lazy(() => import('@/components/lightswind/carousel-3d'));
+
+const SlidingLogoMarquee = React.lazy(() => import('@/components/lightswind/sliding-logo-marquee'))
 
 const imageUrls = [
   "https://i.pinimg.com/736x/43/b0/b6/43b0b6c77528df61d92623c4bdc1e397.jpg",
@@ -260,18 +270,21 @@ function App() {
   return (
     <div>
       <div className='absolute w-full h-screeen bg-[#000]'>
-        <LightBG
-          raysOrigin="top-center"
-          raysColor="#ffff"
-          raysSpeed={1.5}
-          lightSpread={0.8}
-          rayLength={2.2}
-          followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0.1}
-          distortion={0.05}
-          className="custom-rays"
-        />
+        <Suspense fallback={<div>Loading...</div>}>
+          <LightBG
+            raysOrigin="top-center"
+            raysColor="#ffff"
+            raysSpeed={1.5}
+            lightSpread={0.8}
+            rayLength={2.2}
+            followMouse={true}
+            mouseInfluence={0.1}
+            noiseAmount={0.1}
+            distortion={0.05}
+            className="custom-rays"
+          />
+        </Suspense>
+
       </div>
 
       <div>
@@ -281,41 +294,57 @@ function App() {
           >
             <div className="max-w-prose text-left">
               <div className="text-xl font-bold sm:text-xl">
-                <TrueFocus
-                  sentence="Informatics Engineering"
-                  manualMode={false}
-                  blurAmount={5}
-                  borderColor="red"
-                  animationDuration={2}
-                  pauseBetweenAnimations={1}
-                />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <TrueFocus
+                    sentence="Informatics Engineering"
+                    manualMode={false}
+                    blurAmount={5}
+                    borderColor="red"
+                    animationDuration={2}
+                    pauseBetweenAnimations={1}
+                  />
+                </Suspense>
+
+
               </div>
               <div className="mt-2 text-4xl font-bold sm:text-5xl">
-                <TextName
-                  text="Dzikri Rabbani"
-                  delay={150}
-                  animateBy="words"
-                  direction="top"
-                  onAnimationComplete={handleAnimationComplete}
+                <Suspense fallback={<div>Loading...</div>}>
+                  <TextName
+                    text="Dzikri Rabbani"
+                    delay={150}
+                    animateBy="words"
+                    direction="top"
+                    onAnimationComplete={handleAnimationComplete}
 
-                />
+                  />
+                </Suspense>
+
 
               </div>
 
               <div className="text-2xl font-bold sm:text-2xl mt-3">
-                <TypeText
-                  text={["Full Stack Developer", "IT Support Engineer"]}
-                  typingSpeed={75}
-                  pauseDuration={1500}
-                  showCursor={true}
-                  cursorCharacter="|"
-                />
+
+                <Suspense fallback={<div>Loading...</div>}>
+                  <TypeText
+                    text={["Full Stack Developer", "IT Support Engineer"]}
+                    typingSpeed={75}
+                    pauseDuration={1500}
+                    showCursor={true}
+                    cursorCharacter="|"
+                  />
+                </Suspense>
               </div>
               <div className="mt-4 text-base text-pretty sm:text-lg/relaxed">
-                <Captions text="Hi! I’m Dzikri Rabbani, 19 years old and currently in my 3rd year of Informatics Engineering. I have a genuine interest in technology, enjoy coding, exploring IoT, and learning about AI/ML. I love discovering new things and believe in growing a little every day." disabled={false} speed={3} className='custom-class' />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Captions text="Hi! I’m Dzikri Rabbani, 19 years old and currently in my 3rd year of Informatics Engineering. I have a genuine interest in technology, enjoy coding, exploring IoT, and learning about AI/ML. I love discovering new things and believe in growing a little every day." disabled={false} speed={3} className='custom-class' />
+                </Suspense>
+
               </div>
               <div className="mt-4 text-base text-pretty sm:text-lg/relaxed italic">
-                <Captions text=" For me, never stop learning, because life never stops teaching" disabled={false} speed={3} className='custom-class' />
+                <Suspense fallback={<div>Loading...</div>}>
+                  <Captions text=" For me, never stop learning, because life never stops teaching" disabled={false} speed={3} className='custom-class' />
+                </Suspense>
+
               </div>
 
               <FadeContent>
@@ -338,31 +367,37 @@ function App() {
 
             </div>
             <div className="mt-8 sm:mt-0 flex justify-center items-center">
-              <ProfileCard
-                name="Dzikri Rabbani"
-                title="Informatics Engineering Student"
-                handle="sweswoz"
-                status="Online"
-                contactText="Contact Me"
-                avatarUrl="https://images.pexels.com/photos/33334833/pexels-photo-33334833.png"
-                showUserInfo={true}
-                enableTilt={true}
-                enableMobileTilt={false}
-                onContactClick={() => console.log('Contact clicked')}
-              />
+              <Suspense fallback={<div>Loading...</div>}>
+                <ProfileCard
+                  name="Dzikri Rabbani"
+                  title="Informatics Engineering Student"
+                  handle="sweswoz"
+                  status="Online"
+                  contactText="Contact Me"
+                  avatarUrl="https://images.pexels.com/photos/33334833/pexels-photo-33334833.png"
+                  showUserInfo={true}
+                  enableTilt={true}
+                  enableMobileTilt={false}
+                  onContactClick={() => console.log('Contact clicked')}
+                />
+              </Suspense>
+
             </div>
           </div>
         </section>
       </div>
       <div className='mb-10'>
-        <CurvedLoop
-          marqueeText="Ready ✦ To ✦ Explore ✦ My ✦ Page ✦ ? ✦ Let's ✦ Go ✦ !"
-          speed={3}
-          curveAmount={500}
-          direction="right"
-          interactive={true}
-          className="custom-text-style"
-        />
+
+        <Suspense fallback={<div>Loading...</div>}>
+          <CurvedLoop
+            marqueeText="Ready ✦ To ✦ Explore ✦ My ✦ Page ✦ ? ✦ Let's ✦ Go ✦ !"
+            speed={3}
+            curveAmount={500}
+            direction="right"
+            interactive={true}
+            className="custom-text-style"
+          />
+        </Suspense>
       </div>
 
 
@@ -370,19 +405,23 @@ function App() {
       {/* Timelinee */}
       <div>
         <div className='mt-10 absolute w-full h-[1100vh] bg-black overflow-hidden z-0'>
-          <ParticlesBackground
-            colors={['#00ffff', '#ff00ff', '#ffaa00']}
-            size={4}
-            countDesktop={80}
-            countTablet={60}
-            countMobile={40}
-            zIndex={1}
-            height="1100vh"
-            className='z-0' />
+          <Suspense fallback={<div>Loading...</div>}>
+            <ParticlesBackground
+              colors={['#00ffff', '#ff00ff', '#ffaa00']}
+              size={4}
+              countDesktop={80}
+              countTablet={60}
+              countMobile={40}
+              zIndex={1}
+              height="1100vh"
+              className='z-0' />
+          </Suspense>
+
         </div>
 
 
         <div className="my-grid sm:mt-40">
+
 
           <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
             <div className="min-h-screen w-full box">
@@ -418,61 +457,73 @@ function App() {
         <div className='flex flex-row sm:items-center sm:justify-center relative'>
           <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
             <div className='sm:text-5xl text-2xl font-bold text-center mt-10'>
-              <TextName
-                text="Things I Can Kinda Do"
-                delay={150}
-                animateBy="words"
-                direction="left"
-                onAnimationComplete={handleAnimationComplete}
+              <Suspense fallback={<div>Loading...</div>}>
+                <TextName
+                  text="Things I Can Kinda Do"
+                  delay={150}
+                  animateBy="words"
+                  direction="left"
+                  onAnimationComplete={handleAnimationComplete}
 
-              />
+                />
+              </Suspense>
 
             </div>
             <div className="mt-4 text-base text-pretty sm:text-lg/relaxed">
-              <Captions text="Hard Skills (Still Learning)." disabled={false} speed={3} className='custom-class' />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Captions text="Hard Skills (Still Learning)." disabled={false} speed={3} className='custom-class' />
+              </Suspense>
+
             </div>
           </FadeContent>
         </div>
 
         <div style={{ height: '600px', position: 'relative' }}>
-          <CardSwap
-            cardDistance={60}
-            verticalDistance={70}
-            delay={5000}
-            pauseOnHover={false}
-            skewAmount={4}            // Lebih halus skew-nya
-            easing="power1.inOut"
+          <Suspense fallback={<div>Loading...</div>}>
+            <CardSwap
+              cardDistance={60}
+              verticalDistance={70}
+              delay={5000}
+              pauseOnHover={false}
+              skewAmount={4}            // Lebih halus skew-nya
+              easing="power1.inOut"
 
-          >
-            <Card>
-              <img
-                src="https://images.pexels.com/photos/33334936/pexels-photo-33334936.jpeg" // ganti dengan path atau URL gambarnya
-                alt="Card Image"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </Card>
-            <Card>
-              <img
-                src="https://images.pexels.com/photos/33334940/pexels-photo-33334940.jpeg" // ganti dengan path atau URL gambarnya
-                alt="Card Image"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </Card>
-            <Card>
-              <img
-                src="https://images.pexels.com/photos/33334941/pexels-photo-33334941.jpeg" // ganti dengan path atau URL gambarnya
-                alt="Card Image"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </Card>
-            <Card>
-              <img
-                src="https://images.pexels.com/photos/33334939/pexels-photo-33334939.jpeg" // ganti dengan path atau URL gambarnya
-                alt="Card Image"
-                className="absolute inset-0 w-full h-full object-cover"
-              />
-            </Card>
-          </CardSwap>
+            >
+              <Card>
+                <img
+                  loading='lazy'
+                  src="https://images.pexels.com/photos/33334936/pexels-photo-33334936.jpeg" // ganti dengan path atau URL gambarnya
+                  alt="Card Image"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </Card>
+              <Card>
+                <img
+                  loading='lazy'
+                  src="https://images.pexels.com/photos/33334940/pexels-photo-33334940.jpeg" // ganti dengan path atau URL gambarnya
+                  alt="Card Image"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </Card>
+              <Card>
+                <img
+                  loading='lazy'
+                  src="https://images.pexels.com/photos/33334941/pexels-photo-33334941.jpeg" // ganti dengan path atau URL gambarnya
+                  alt="Card Image"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </Card>
+              <Card>
+                <img
+                  loading='lazy'
+                  src="https://images.pexels.com/photos/33334939/pexels-photo-33334939.jpeg" // ganti dengan path atau URL gambarnya
+                  alt="Card Image"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </Card>
+            </CardSwap>
+          </Suspense>
+
 
         </div>
       </div>
@@ -482,31 +533,37 @@ function App() {
 
         {/* LightBG - di bawah */}
         <div className="absolute inset-0 z-0 pointer-events-none">
-          <LightBG
-            raysOrigin="left"
-            raysColor="#ffff"
-            raysSpeed={1.5}
-            lightSpread={0.8}
-            rayLength={2.0}
-            followMouse={true}
-            mouseInfluence={0.1}
-            noiseAmount={0.1}
-            distortion={0.05}
-            className="custom-rays"
-          />
+          <Suspense fallback={<div>Loading...</div>}>
+            <LightBG
+              raysOrigin="left"
+              raysColor="#ffff"
+              raysSpeed={1.5}
+              lightSpread={0.8}
+              rayLength={2.0}
+              followMouse={true}
+              mouseInfluence={0.1}
+              noiseAmount={0.1}
+              distortion={0.05}
+              className="custom-rays"
+            />
+          </Suspense>
+
         </div>
 
         {/* Marquee - ditaruh paling atas */}
         <div className="absolute z-[9999] w-full flex justify-center items-center pointer-events-auto">
-          <TextScrollMarquee
-            baseVelocity={5}
-            direction="left"
-            className="text-3xl font-bold uppercase text-white whitespace-nowrap"
-            scrollDependent={false}
-            delay={500}
-          >
-            Explore more? LET'S GOOOOOO 🚀
-          </TextScrollMarquee>
+
+          <Suspense fallback={<div>Loading...</div>}>
+            <TextScrollMarquee
+              baseVelocity={5}
+              direction="left"
+              className="text-3xl font-bold uppercase text-white whitespace-nowrap"
+              scrollDependent={false}
+              delay={500}
+            >
+              Explore more? LET'S GOOOOOO 🚀
+            </TextScrollMarquee>
+          </Suspense>
         </div>
 
       </div>
@@ -516,32 +573,41 @@ function App() {
       <div className='z-50 my-grid-2'>
         <div className='flex flex-row sm:items-center sm:justify-center relative px-4'>
           <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
-            <h1 className='sm:text-5xl text-2xl font-bold text-center mt-10'>
-              <TextName
-                text="Human Skills That Actually Matter"
-                delay={150}
-                animateBy="words"
-                direction="left"
-                onAnimationComplete={handleAnimationComplete}
+            <div className='sm:text-5xl text-2xl font-bold text-center mt-10'>
 
-              />
+              <Suspense fallback={<div>Loading...</div>}>
 
-            </h1>
-            <p className="mt-4 text-base text-pretty sm:text-lg/relaxed">
-              <Captions text="Soft skills that come naturally to me." disabled={false} speed={3} className='custom-class' />
-            </p>
+                <TextName
+                  text="Human Skills That Actually Matter"
+                  delay={150}
+                  animateBy="words"
+                  direction="left"
+                  onAnimationComplete={handleAnimationComplete}
+
+                />
+              </Suspense>
+            </div>
+            <div className="mt-4 text-base text-pretty sm:text-lg/relaxed">
+              <Suspense fallback={<div>Loading...</div>}>
+                <Captions text="Soft skills that come naturally to me." disabled={false} speed={3} className='custom-class' />
+              </Suspense>
+
+            </div>
           </FadeContent>
         </div>
         <div style={{ height: '500px', position: 'relative' }} className='z-50 col-span-2'>
-          <InfiniteScroll
-            items={items}
-            isTilted={true}
-            tiltDirection='left'
-            autoplay={true}
-            autoplaySpeed={0.1}
-            autoplayDirection="down"
-            pauseOnHover={true}
-          />
+
+          <Suspense fallback={<div>Loading...</div>}>
+            <InfiniteScroll
+              items={items}
+              isTilted={true}
+              tiltDirection='left'
+              autoplay={true}
+              autoplaySpeed={0.1}
+              autoplayDirection="down"
+              pauseOnHover={true}
+            />
+          </Suspense>
         </div>
       </div>
 
@@ -551,23 +617,28 @@ function App() {
       <div className='mt-40'>
         <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
           <div className='sm:text-5xl text-2xl font-bold text-center mt-10 px-2'>
-            <TextName
-              text="Tech Stack I’ve Played With"
-              delay={150}
-              animateBy="words"
-              direction="left"
-              onAnimationComplete={handleAnimationComplete}
-
-            />
-
+            <Suspense fallback={<div>Loading...</div>}>
+              <TextName
+                text="Tech Stack I’ve Played With"
+                delay={150}
+                animateBy="words"
+                direction="left"
+                onAnimationComplete={handleAnimationComplete}
+              />
+            </Suspense>
           </div>
           <div className="px-2 mt-4 text-base text-pretty sm:text-lg/relaxed">
-            <Captions text="but sometimes still peek at the docs, It's human bro." disabled={false} speed={3} className='custom-class' />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Captions text="but sometimes still peek at the docs, It's human bro." disabled={false} speed={3} className='custom-class' />
+
+            </Suspense>
           </div>
         </FadeContent>
         <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
           <div style={{ height: '600px', position: 'relative' }} className='justify-center items-center flex flex-col px-6 mx-auto'>
-            <GlassIcons items={techStack} className="custom-class" />
+            <Suspense fallback={<div>Loading...</div>}>
+              <GlassIcons items={techStack} className="custom-class" />
+            </Suspense>
           </div>
         </FadeContent>
 
@@ -575,26 +646,33 @@ function App() {
       <div className='mt-20'>
         <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
           <div className='sm:text-5xl text-2xl font-bold text-center mt-10'>
-            <TextName
-              text="What I’ve Cooked in My Dev Kitchen"
-              delay={150}
-              animateBy="words"
-              direction="left"
-              onAnimationComplete={handleAnimationComplete}
 
-            />
-
+            <Suspense fallback={<div>Loading...</div>}>
+              <TextName
+                text="What I’ve Cooked in My Dev Kitchen"
+                delay={150}
+                animateBy="words"
+                direction="left"
+                onAnimationComplete={handleAnimationComplete}
+              />
+            </Suspense>
           </div>
           <div className="mt-4 text-base text-pretty sm:text-lg/relaxed">
-            <Captions text="Some of these I built alone, some with friends. Either way, it’s all part of the fun (and chaos) of learning and creating" disabled={false} speed={3} className='custom-class' />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Captions text="Some of these I built alone, some with friends. Either way, it’s all part of the fun (and chaos) of learning and creating" disabled={false} speed={3} className='custom-class' />
+            </Suspense>
+
           </div>
           <div className='mt-4'>
-            <Carousel3D
-              items={projects}
-              autoRotate={true}
-              rotateInterval={4000}
-              cardHeight={500}
-            />
+            <Suspense fallback={<div>Loading...</div>}>
+              <Carousel3D
+                items={projects}
+                autoRotate={true}
+                rotateInterval={4000}
+                cardHeight={500}
+              />
+            </Suspense>
+
           </div>
 
         </FadeContent>
@@ -607,31 +685,39 @@ function App() {
         <div className='flex flex-row sm:items-center sm:justify-center relative px-4'>
           <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
             <div className='sm:text-5xl text-2xl font-bold text-center mt-10'>
-              <TextName
-                text="Badges of Growth"
-                delay={150}
-                animateBy="words"
-                direction="left"
-                onAnimationComplete={handleAnimationComplete}
 
-              />
+              <Suspense fallback={<div>Loading...</div>}>
+                <TextName
+                  text="Badges of Growth"
+                  delay={150}
+                  animateBy="words"
+                  direction="left"
+                  onAnimationComplete={handleAnimationComplete}
 
+                />
+
+              </Suspense>
             </div>
             <div className="mt-4 text-base text-pretty sm:text-lg/relaxed">
-              <Captions text="Proof that I’ve learned a thing or two along the way." disabled={false} speed={3} className='custom-class' />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Captions text="Proof that I’ve learned a thing or two along the way." disabled={false} speed={3} className='custom-class' />
+              </Suspense>
             </div>
           </FadeContent>
         </div>
 
         <div style={{ height: '500px', position: 'relative' }} className='z-50 sm:justify-center sm:items-center sm:flex'>
-          <Carousel
-            baseWidth={380}
-            autoplay={true}
-            autoplayDelay={3000}
-            pauseOnHover={true}
-            loop={true}
-            round={false}
-          />
+
+          <Suspense fallback={<div>Loading...</div>}>
+            <Carousel
+              baseWidth={380}
+              autoplay={true}
+              autoplayDelay={3000}
+              pauseOnHover={true}
+              loop={true}
+              round={false}
+            />
+          </Suspense>
         </div>
       </div>
 
@@ -639,34 +725,41 @@ function App() {
         <div className='flex flex-row sm:items-center sm:justify-start mb-10 relative px-4'>
           <FadeContent blur={true} duration={800} easing="ease-out" reverse={true} initialOpacity={0}>
             <div className='sm:text-5xl text-2xl font-bold text-center mt-10'>
-              <TextName
-                text="Let’s Make Something Cool Together"
-                delay={150}
-                animateBy="words"
-                direction="left"
-                onAnimationComplete={handleAnimationComplete}
+              <Suspense fallback={<div>Loading...</div>}>
+                <TextName
+                  text="Let’s Make Something Cool Together"
+                  delay={150}
+                  animateBy="words"
+                  direction="left"
+                  onAnimationComplete={handleAnimationComplete}
 
-              />
+                />
+              </Suspense>
+
 
             </div>
             <div className="mt-4 text-base text-pretty sm:text-lg/relaxed">
-              <Captions text="Have an idea or want to collab? Hit me up through the socials below. I'm always down to build something fun (or at least try to)." disabled={false} speed={3} className='custom-class' />
+              <Suspense fallback={<div>Loading...</div>}>
+                <Captions text="Have an idea or want to collab? Hit me up through the socials below. I'm always down to build something fun (or at least try to)." disabled={false} speed={3} className='custom-class' />
+              </Suspense>
+
             </div>
           </FadeContent>
         </div>
         <FadeContent>
           <div className='z-50 sm:items-center sm:flex sm:justify-center sm:justify-self-center mt-20'>
-            <SlidingLogoMarquee
-              items={logos}
-              speed={8}
-              height="120px"
-              enableBlur={true}
-              blurIntensity={2}
-              pauseOnHover={true}
-              showGridBackground={true}
-              onItemClick={(item) => console.log("Clicked:", item.id)}
-            />
-
+            <Suspense fallback={<div>Loading...</div>}>
+              <SlidingLogoMarquee
+                items={logos}
+                speed={8}
+                height="120px"
+                enableBlur={true}
+                blurIntensity={2}
+                pauseOnHover={true}
+                showGridBackground={true}
+                onItemClick={(item) => console.log("Clicked:", item.id)}
+              />
+            </Suspense>
           </div>
         </FadeContent>
 
@@ -675,14 +768,16 @@ function App() {
       <div className='mt-40'>
         <FadeContent>
           <div className='sm:text-5xl text-2xl font-bold text-center mb-10 px-2'>
-            <TextName
-              text="Things I Can Build for You"
-              delay={150}
-              animateBy="words"
-              direction="left"
-              onAnimationComplete={handleAnimationComplete}
+            <Suspense fallback={<div>Loading...</div>}>
+              <TextName
+                text="Things I Can Build for You"
+                delay={150}
+                animateBy="words"
+                direction="left"
+                onAnimationComplete={handleAnimationComplete}
 
-            />
+              />
+            </Suspense>
           </div>
 
 
@@ -694,7 +789,10 @@ function App() {
 
 
       <div className="App mt-30">
-        <ChatBubble />
+        <Suspense fallback={<div>Loading...</div>}>
+          <ChatBubble />
+        </Suspense>
+      
       </div>
 
 
@@ -712,7 +810,7 @@ function App() {
 
 
 
-      
+
 
     </div>
 
