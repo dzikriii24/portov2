@@ -246,6 +246,24 @@ const projects = [
     tags: ["PHP", "Flask", "API Development", "MySQL", "IoT"],
     imageUrl: "https://images.pexels.com/photos/33320664/pexels-photo-33320664.jpeg",
     link: "https://github.com/dzikriii24/tanduria"
+  },
+   {
+    id: 8,
+    title: "Bootstrap Company Profile",
+    brand: "",
+   description: "Bootstrap Company Profile adalah template berbasis Bootstrap yang dirancang untuk menampilkan profil perusahaan secara modern, responsif, dan profesional. Template ini dapat digunakan untuk memperkenalkan visi, misi, layanan, tim, serta portofolio perusahaan dengan tampilan yang elegan dan mudah disesuaikan.",
+    tags: ["Bootstrap", "HTML", "JavaScript", "Tugas PAW"],
+    imageUrl: "https://i.pinimg.com/736x/9f/42/0c/9f420cadb36b0846c214709f8f97f1a9.jpg",
+    link: "https://dzikrirabbani-paw.netlify.app/"
+  },
+  {
+    id: 9,
+    title: "Tailwind Company Profile",
+    brand: "",
+    description: "Tailwind Company Profile adalah template berbasis Tailwind CSS yang dirancang untuk menampilkan identitas perusahaan secara modern, minimalis, dan responsif. Template ini membantu perusahaan memperkenalkan profil, layanan, portofolio, serta tim dengan tampilan yang fleksibel dan mudah disesuaikan sesuai kebutuhan branding.",
+    tags: ["Tailwind", "HTML", "JavaScript", "Tugas PAW"],
+    imageUrl: "https://i.pinimg.com/736x/75/8e/c9/758ec97fcf075e6e3e6a5409d08c4a9a.jpg",
+    link: "https://dzikrirabbani-paw.netlify.app/tailwind"
   }
 ];
 const handleAnimationComplete = () => {
@@ -404,22 +422,6 @@ function App() {
 
       {/* Timelinee */}
       <div>
-        <div className='mt-10 absolute w-full h-[1100vh] bg-black overflow-hidden z-0'>
-          <Suspense fallback={<div>Loading...</div>}>
-            <ParticlesBackground
-              colors={['#00ffff', '#ff00ff', '#ffaa00']}
-              size={4}
-              countDesktop={80}
-              countTablet={60}
-              countMobile={40}
-              zIndex={1}
-              height="1100vh"
-              className='z-0' />
-          </Suspense>
-
-        </div>
-
-
         <div className="my-grid sm:mt-40">
 
 
@@ -778,11 +780,6 @@ function App() {
 
               />
             </Suspense>
-          </div>
-
-
-          <div className='sm:h-[100vh] h-[500px] bg-base-100 text-black'>
-            <Jasa images={images} />
           </div>
         </FadeContent>
       </div>
