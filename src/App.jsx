@@ -247,11 +247,11 @@ const projects = [
     imageUrl: "https://images.pexels.com/photos/33320664/pexels-photo-33320664.jpeg",
     link: "https://github.com/dzikriii24/tanduria"
   },
-   {
+  {
     id: 8,
     title: "Bootstrap Company Profile",
     brand: "",
-   description: "Bootstrap Company Profile adalah template berbasis Bootstrap yang dirancang untuk menampilkan profil perusahaan secara modern, responsif, dan profesional. Template ini dapat digunakan untuk memperkenalkan visi, misi, layanan, tim, serta portofolio perusahaan dengan tampilan yang elegan dan mudah disesuaikan.",
+    description: "Bootstrap Company Profile adalah template berbasis Bootstrap yang dirancang untuk menampilkan profil perusahaan secara modern, responsif, dan profesional. Template ini dapat digunakan untuk memperkenalkan visi, misi, layanan, tim, serta portofolio perusahaan dengan tampilan yang elegan dan mudah disesuaikan.",
     tags: ["Bootstrap", "HTML", "JavaScript", "Tugas PAW"],
     imageUrl: "https://i.pinimg.com/736x/9f/42/0c/9f420cadb36b0846c214709f8f97f1a9.jpg",
     link: "https://dzikrirabbani-paw.netlify.app/"
@@ -780,6 +780,10 @@ function App() {
 
               />
             </Suspense>
+
+            <div className='sm:h-[100vh] h-[500px] bg-base-100 text-black'>
+              <Jasa images={images} />
+            </div>
           </div>
         </FadeContent>
       </div>
@@ -789,7 +793,7 @@ function App() {
         <Suspense fallback={<div>Loading...</div>}>
           <ChatBubble />
         </Suspense>
-      
+
       </div>
 
 
