@@ -10,7 +10,7 @@ export default defineConfig({
       threshold: 1024, // cuma file >1kb yang di-compress
       deleteOriginFile: false // kalau mau hapus file asli, set true
     })],
-  base: '/', // Nama repo kamu
+  base: '/', // Ubah ke '/' untuk Vercel. Hapus '/portov2/' agar aset terbaca di root.
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
